@@ -2,6 +2,7 @@ package com.smart.elearning.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smart.elearning.enumeration.Role;
 
 import jakarta.persistence.Column;
@@ -43,6 +44,7 @@ public class User {
         @Column(nullable = false)
         private Role role;
         
+        @JsonIgnore
         @OneToMany(mappedBy = "etudiant")
         private List<Abonnement> abonnements;
 }

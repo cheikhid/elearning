@@ -2,6 +2,9 @@ package com.smart.elearning.entity;
 
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +30,7 @@ public class Cours {
     @Column
     private String description;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "cours")
     private List<Abonnement> abonnements;
 
