@@ -1,4 +1,4 @@
-package com.smart.elearning.controller;
+package com.smart.elearning.web;
 
 import java.util.List;
 
@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.smart.elearning.utils.Constants;
 
-import com.smart.elearning.entity.User;
+import com.smart.elearning.entity.AppUser;
 import com.smart.elearning.service.UserService;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(Constants.APP_ROOT+Constants.USER)
 public class UserController {
     @Autowired
     private UserService userService;
@@ -25,29 +26,39 @@ public class UserController {
     
 
     // Endpoints pour l'entité User
-    @PostMapping("/users")
-    public User saveUser(@RequestBody User user) {
+    @PostMapping
+    public AppUser saveUser(@RequestBody AppUser user) {
         return userService.saveUser(user);
     }
 
-    @GetMapping("/users")
-    public List<User> getAllUsers() {
+    @GetMapping
+    public List<AppUser> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable Long id) {
+    @GetMapping("/{id}")
+    public AppUser getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
-    @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable Long id){
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable int id){
         userService.deleteUser(id);
     }
 
-    @GetMapping("user-abonnement/{idUser}")
+ /*    @GetMapping("user-abonnement/{idUser}")
     public ResponseEntity<Object> getUserAbonnement(@PathVariable Long id){
         return getUserAbonnement(id);
+    }*/
+
+
+
+
+
+
+    @GetMapping("/{id}/abonnements")
+    public ResponseEntity<Object> getUserAbonnement(@PathVariable int id) {
+        return userService.getUserAbonnement(id);
     }
 
 }

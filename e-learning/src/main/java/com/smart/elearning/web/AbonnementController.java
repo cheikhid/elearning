@@ -1,4 +1,4 @@
-package com.smart.elearning.controller;
+package com.smart.elearning.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.smart.elearning.utils.Constants;
 
 import com.smart.elearning.entity.Abonnement;
 import com.smart.elearning.service.AbonnementService;
 
 
 @RestController
-@RequestMapping("/abonnement")
+@RequestMapping(Constants.APP_ROOT+Constants.ABONNEMENT)
 public class AbonnementController {
 
     @Autowired
@@ -24,24 +25,24 @@ public class AbonnementController {
 
     // Endpoints pour l'entité Abonnement
 
-    @PostMapping("/abonnements")
+    @PostMapping
     public Abonnement createAbonnement(@RequestBody Abonnement abonnement) {
         return abonnementService.saveAbonnement(abonnement);
     }
     
-    @GetMapping("/abonnements")
+    @GetMapping
     public List<Abonnement> getAllAbonnements() {
         return abonnementService.getAllAbonnements();
     }
 
-    @GetMapping("/abonnements/{id}")
+    @GetMapping("/{id}")
     public Abonnement getAbonnementById(@PathVariable Long id) {
         return abonnementService.getAbonnementById(id);
     }
 
    
 
-    @DeleteMapping("/abonnements/{id}")
+    @DeleteMapping("/{id}")
     public void deleteAbonnement(@PathVariable Long id) {
         abonnementService.deleteAbonnement(id);
     }

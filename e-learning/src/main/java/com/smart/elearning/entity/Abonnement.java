@@ -32,7 +32,7 @@ public class Abonnement {
 
 
     @ManyToOne(optional = false)
-    private User etudiant;
+    private AppUser etudiant;
     
     @ManyToOne(optional = false)
     private Cours cours;

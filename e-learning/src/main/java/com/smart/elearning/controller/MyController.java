@@ -1,4 +1,4 @@
-package com.smart.elearning.controller;
+/*package com.smart.elearning.controller;
 
 import java.util.List;
 
@@ -88,12 +88,13 @@ public class MyController {
     }
 
     @GetMapping("/users/{id}")
-    public User getUserById(@PathVariable Long id) {
+    public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable Long id){
+    public void deleteUser(@PathVariable int id){
         userService.deleteUser(id);
     }
 }
+*/

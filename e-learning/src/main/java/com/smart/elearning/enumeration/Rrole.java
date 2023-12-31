@@ -1,6 +1,6 @@
 package com.smart.elearning.enumeration;
 
-public enum Role {
+public enum Rrole {
     
     student,
     admin
